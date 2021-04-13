@@ -2,16 +2,19 @@
     include "./entity/Product.php";
     class ProductDemo extends Product{
         private static $instance;
+
         private function __construct()
         {
             
         }
+
         public static function getInstance(){
             if(empty(self::$instance)){
                 self::$instance = new Product();
             }
             return self::$instance;
         }
+
         public function createProductTest()
         {
             $product = new Product();
@@ -20,6 +23,7 @@
             $product->setCategoryId(1);
             $product->setPrice(1000);
         }
+        
         public function printProduct($product){
             if(empty($product)){
                 echo "<br>";

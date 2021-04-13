@@ -1,39 +1,30 @@
 <?php 
-    require "Database.php";
-    include "../entity/Product.php";
-
-
-    class CategoryDAO{
+    include_once "BaseDAO.php";
+    include_once "../IDAO/ICategoryDAO.php";
+    class CategoryDAO extends BaseDAO implements ICategoryDAO{
         
         private static $instants;
         private function __construct()
         {
             
         }
+
         public static function getInstants(){
             if(empty(self::$instants)){
                 self::$instants = new CategoryDAO();
             }
             return self::$instants;
         }
-        
-        public function insert($row){
-            $db = Database::getInstants();
-            $check = $db->insertTable("category",$row);
-            if($check == -1){
-                return false;
-            }
-            return true;
-        }
+
         public function findAll(){
             $db = Database::getInstants();
-            return $db->selectTable("category");
+            return $db->selectTable(CATEGORY);
         }
-        public function updateTest($id,$row){
+
+        public function findById($id)
+        {
             $db = Database::getInstants();
-        $db->updateByIdTable($id,$row);
+            return $db->selectByIdTable(CATEGORY,$id);
         }
     }
-
-
 ?>

@@ -1,7 +1,7 @@
 <?php 
-    require "Database.php";
-    include "../entity/Accessotion.php";
-    class AccessoryDAO{
+    include_once "BaseDAO.php";
+    include_once "../IDAO/IAccessoryDAO.php";
+    class AccessoryDAO extends BaseDAO implements IAccessoryDAO{
         private static $instants;
         private function __construct()
         {
@@ -14,26 +14,15 @@
             return self::$instants;
         }
 
-        public function insert($row){
-            $db = Database::getInstants();
-            $check = $db->insertTable("accessory",$row);
-            if($check == -1){
-                return false;
-            }
-            return true;
-        }
-        public function update($row){
-            $db = Database::getInstants();
-            $check = $db->updateByIdTable($row->getId(),$row);
-            if($check == -1){
-                return false;
-            }
-            return true;
-        }
         public function findAll(){
             $db = Database::getInstants();
-            return $db->selectTable('accessory');
-
+            return $db->selectTable(ACCESSORY);
+        }
+        
+        public function findById($id)
+        {
+            $db = Database::getInstants();
+            return $db->selectByIdTable(ACCESSORY,$id);
         }
     }
 ?>
