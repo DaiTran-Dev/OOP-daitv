@@ -2,6 +2,7 @@
     abstract class BaseRow{
         protected $id;
         protected $name;
+        protected $type;
         
         public function setId($id){
             $this->id = $id;
@@ -17,6 +18,14 @@
         
         public function getName(){
             return $this->name;
-        }     
+        }  
+
+        public function setType($type){
+            $this->type = $type;
+        }
+        
+        public function getType(){
+            return $this->type;
+        }   
     }
 ?>

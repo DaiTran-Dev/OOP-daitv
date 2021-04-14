@@ -10,15 +10,13 @@
             $category = new Category();
             $category->setId(1);
             $category->setName("Danh muc so 1");
+            $category->setType(CATEGORY);
             $cateDao->insert($category);
         }
 
         public function findAllTest(){
             $cateDao = CategoryDAO::getInstants();
-            $data = $cateDao->findAll();
-            if( $data  != -1){
-                return $data;
-            }
+            return $cateDao->findAll();
         }
         
         public function updateTest(){
@@ -26,6 +24,7 @@
             $category = new Category();
             $category->setId(1);
             $category->setName("Danh muc so 1 da update");
+            $category->setType(CATEGORY);
             $cateDao->update($category);
         }
     }

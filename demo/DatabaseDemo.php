@@ -17,18 +17,21 @@
                 $product->setName("Sản phẩm số".$i);
                 $product->setCategoryId(2);
                 $product->setPrice(2000);
+                $product->setType(PRODUCT);
                 $db->insertTable($product);
             }
             for ($i=1; $i <=10 ; $i++) { 
                 $category = new Category();
                 $category->setId($i);
                 $category->setName("Danh muc so".$i);
+                $category->setType(CATEGORY);
                 $db->insertTable($category);
             }
             for ($i=1; $i <=10 ; $i++) { 
                 $accessotion = new Accessotion();
                 $accessotion->setId($i);
                 $accessotion->setName("Quyen truy cap so".$i);
+                $accessotion->setType(ACCESSORY);
                 $db->insertTable($accessotion);
             }
             echo "Da run innitData";
@@ -41,6 +44,7 @@
             $product->setName("Sản phẩm số 2");
             $product->setCategoryId(2);
             $product->setPrice(2000);
+            $product->setType(PRODUCT);
             $db->insertTable($product);
         }
 
@@ -51,6 +55,7 @@
             $product->setName("Sản phẩm số 2 da sua");
             $product->setCategoryId(2);
             $product->setPrice(2000);
+            $product->setType(PRODUCT);
             $db->updateTable($product);
         }
 
@@ -61,6 +66,7 @@
             $product->setName("Sản phẩm số 2 da sua");
             $product->setCategoryId(2);
             $product->setPrice(2000);
+            $product->setType(PRODUCT);
             $db->deleteTable($product);
         }
 
@@ -81,6 +87,7 @@
             $product->setName("Sản phẩm số 2 da sua byId");
             $product->setCategoryId(2);
             $product->setPrice(2000);
+            $product->setType(PRODUCT);
             $db->updateTable($product);
         }
         

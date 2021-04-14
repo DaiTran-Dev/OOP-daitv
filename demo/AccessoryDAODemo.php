@@ -7,18 +7,20 @@
 
         public function insertTest(){
             $accDao = AccessoryDAO::getInstants();
-            $acc = new Accessotion();
-            $acc->setId(1);
-            $acc->setName("admin");
-            return $accDao->insert($acc);
+            $accessotion = new Accessotion();
+            $accessotion->setId(1);
+            $accessotion->setName("admin");
+            $accessotion->setType(ACCESSORY);
+            return $accDao->insert($accessotion);
         }
 
         public function updateTest(){
             $accDao = AccessoryDAO::getInstants();
-            $acc = new Accessotion();
-            $acc->setId(1);
-            $acc->setName("admin da sua");
-            return $accDao->update($acc);
+            $accessotion = new Accessotion();
+            $accessotion->setId(1);
+            $accessotion->setName("admin da sua");
+            $accessotion->setType(ACCESSORY);
+            return $accDao->update($accessotion);
         }
 
         public function findAllTest(){

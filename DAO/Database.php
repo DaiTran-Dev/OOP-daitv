@@ -26,7 +26,7 @@
             if(!$this->checkRow($row)){
                 return -1;
             }     
-            $table = &$this->searchTable($row);
+            $table = &$this->searchTable($row->getType());
             if(is_array($table)){
                 return array_push($table,$row);
             }
@@ -38,7 +38,7 @@
                 return -1;
             }
             $table = array();
-            $table = &$this->searchTable($row);
+            $table = &$this->searchTable($row->getType());
             if(!is_array($table)){
                 return -1;
             }      
@@ -60,7 +60,7 @@
                 return -1;
             }
             $table = array();
-            $table = &$this->searchTable($row);
+            $table = &$this->searchTable($row->getType());
             $index = -1;
             if(!is_array($table)){
                 return -1;
@@ -79,7 +79,7 @@
 
         public function selectTable($name,$where=null){
             $table = array();
-            $table = &$this->searchTable($name,false);
+            $table = &$this->searchTable($name);
             if(!is_array($table)){
                 return $table;
             }
@@ -94,7 +94,7 @@
 
         public function selectByIdTable($name,$id){
             $table = array();
-            $table = &$this->searchTable($name,false);
+            $table = &$this->searchTable($name);
             if(!is_array($table)){
                 return $table;
             }
@@ -110,25 +110,25 @@
        
         public function truncateTable($name){
             $table = array();
-            $table = &$this->searchTable($name,false);
+            $table = &$this->searchTable($name);
             if(is_array($table)){
                 $table =array();                    
             }
         }
 
         private function checkRow($row){
-            if(!is_object($row)){
+            if(!is_object($row) || empty($row->getType())){
                 return false;
             }
-            if(get_parent_class($row) && strcmp(strtolower(get_parent_class($row)),BASEROW)==0){
-                return true;
+            $table = $this->searchTable($row->getType());
+            if(!is_array($table)){
+                return false;
             }
-            return false;
+            return true;
         }
 
-        private function &searchTable($row,$bool=true){
-            ($bool)? $nameTable = get_class($row) : $nameTable = $row;
-            switch (strtolower($nameTable)) {
+        private function &searchTable($row){
+            switch (strtolower($row)) {
                 case CATEGORY:
                     return $this->categoryTable;
                     break;
@@ -142,7 +142,8 @@
                     return $this->accessoryTable;
                     break; 
                 default:
-                    return -1;
+                    $result= -1;
+                    return $result;
                     break;     
             }
         }

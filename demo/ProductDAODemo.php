@@ -14,6 +14,7 @@
             $product->setName("Sản phẩm số ");
             $product->setCategoryId(1);
             $product->setPrice(1000);
+            $product->setType(PRODUCT);
             return $proDao->insert($product);
         }
 
@@ -24,6 +25,7 @@
             $product->setName("Sản phẩm số da update");
             $product->setCategoryId(1);
             $product->setPrice(1000);
+            $product->setType(PRODUCT);
             return $proDao->update($product);
         }
 

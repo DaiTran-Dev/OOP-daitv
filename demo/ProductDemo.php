@@ -22,6 +22,7 @@
             $product->setName("Sản phẩm số ");
             $product->setCategoryId(1);
             $product->setPrice(1000);
+            $product->setType(PRODUCT);
         }
         
         public function printProduct($product){
