@@ -1,11 +1,15 @@
 <?php 
+
     include "../DAO/AccessoryDAO.php";
-    class AccessoryDAODemo{
+
+    class AccessoryDAODemo
+    {
         public function __construct()
         {          
         }
 
-        public function insertTest(){
+        public function insertTest()
+        {
             $accDao = AccessoryDAO::getInstants();
             $accessotion = new Accessotion();
             $accessotion->setId(1);
@@ -14,7 +18,8 @@
             return $accDao->insert($accessotion);
         }
 
-        public function updateTest(){
+        public function updateTest()
+        {
             $accDao = AccessoryDAO::getInstants();
             $accessotion = new Accessotion();
             $accessotion->setId(1);
@@ -23,7 +28,8 @@
             return $accDao->update($accessotion);
         }
 
-        public function findAllTest(){
+        public function findAllTest()
+        {
             $accDao = AccessoryDAO::getInstants();
             $result = $accDao->findAll();
             return $result;
@@ -36,4 +42,3 @@
     $accDao->updateTest();
     echo "<br>Du lieu <br>";
     var_dump($accDao->findAllTest());
-?>

@@ -1,11 +1,16 @@
 <?php  
-   require "../DAO/CategoryDAO.php";
-    class CategoryDAODemo{
+
+    require "../DAO/CategoryDAO.php";
+
+    class CategoryDAODemo
+    {
         public function __construct()
         {      
+            
         }
 
-        public function insertTest(){
+        public function insertTest()
+        {
             $cateDao = CategoryDAO::getInstants();
             $category = new Category();
             $category->setId(1);
@@ -14,12 +19,14 @@
             $cateDao->insert($category);
         }
 
-        public function findAllTest(){
+        public function findAllTest()
+        {
             $cateDao = CategoryDAO::getInstants();
             return $cateDao->findAll();
         }
         
-        public function updateTest(){
+        public function updateTest()
+        {
             $cateDao = CategoryDAO::getInstants();
             $category = new Category();
             $category->setId(1);
@@ -41,4 +48,3 @@
     $cateDao->insertTest();
     echo "<br>Du lieu <br>";
     var_dump($cateDao->findAllTest());
-?>

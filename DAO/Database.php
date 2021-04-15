@@ -1,7 +1,10 @@
 <?php 
+
     include_once "../IDAO/IDatabase.php";
     include "../Constants/ConstantDB.php";
-    class Database implements IDatabase{
+
+    class Database implements IDatabase
+    {
         private static $instants;
         private $productTable;
         private $categoryTable;
@@ -14,15 +17,16 @@
             $this->accessoryTable = array();
         }
 
-        public static function getInstants(){
+        public static function getInstants()
+        {
             if(empty(self::$instants)){
                 self::$instants = new Database();
             }
             return self::$instants;
         }
 
-        public function insertTable($row){
-            //Check $row is object in fd entity
+        public function insertTable($row)
+        {
             if(!$this->checkRow($row)){
                 return -1;
             }     
@@ -33,7 +37,8 @@
             return -1;
         }
 
-        public function updateTable($row){
+        public function updateTable($row)
+        {
             if(!$this->checkRow($row)){
                 return -1;
             }
@@ -55,7 +60,8 @@
             return $index; 
         }
 
-        public function deleteTable($row){
+        public function deleteTable($row)
+        {
             if(!$this->checkRow($row)){
                 return -1;
             }
@@ -77,7 +83,8 @@
             return array_splice($table,$index,1);
         }
 
-        public function selectTable($name,$where=null){
+        public function selectTable($name,$where=null)
+        {
             $table = array();
             $table = &$this->searchTable($name);
             if(!is_array($table)){
@@ -108,7 +115,8 @@
             return $result;
         }
        
-        public function truncateTable($name){
+        public function truncateTable($name)
+        {
             $table = array();
             $table = &$this->searchTable($name);
             if(is_array($table)){
@@ -116,6 +124,7 @@
             }
         }
 
+        // Kiểm tra xem $row có phải là object thuoc entity
         private function checkRow($row){
             if(!is_object($row) || empty($row->getType())){
                 return false;
@@ -127,8 +136,10 @@
             return true;
         }
 
-        private function &searchTable($row){
-            switch (strtolower($row)) {
+        // Lấy địa chỉ thám chiếu của thuộc tính cần tìm thông qua $name
+        private function &searchTable($name)
+        {
+            switch (strtolower($name)) {
                 case CATEGORY:
                     return $this->categoryTable;
                     break;
@@ -148,4 +159,3 @@
             }
         }
     }
-?>

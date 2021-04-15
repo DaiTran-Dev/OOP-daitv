@@ -1,13 +1,16 @@
 <?php 
-    include "../DAO/ProductDAO.php";
-    class ProductDAODemo{
 
+    include "../DAO/ProductDAO.php";
+
+    class ProductDAODemo
+    {
         public function __construct()
         {
             
         }
 
-        public function insertTest(){
+        public function insertTest()
+        {
             $proDao = ProductDAO::getInstants();
             $product = new Product();
             $product->setId(1);
@@ -18,7 +21,8 @@
             return $proDao->insert($product);
         }
 
-        public function updateTest(){
+        public function updateTest()
+        {
             $proDao = ProductDAO::getInstants();
             $product = new Product();
             $product->setId(1);
@@ -29,7 +33,8 @@
             return $proDao->update($product);
         }
 
-        public function findAllTest(){
+        public function findAllTest()
+        {
             $proDao = ProductDAO::getInstants();
             $result = $proDao->findAll();
             return $result;
@@ -43,4 +48,3 @@
     $proDao->updateTest();
     echo "<br>Du lieu <br>";
     var_dump($proDao->findAllTest());
-?>

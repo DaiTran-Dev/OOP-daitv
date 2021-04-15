@@ -1,15 +1,19 @@
 <?php
+
     require "../DAO/Database.php";
     include "../entity/Product.php";
     include "../entity/Accessotion.php";
     include "../entity/Category.php";
-    class DatabaseDemo{
+
+    class DatabaseDemo
+    {
         public function __construct()
         {
             
         }
 
-        public function initDatabase(){
+        public function initDatabase()
+        {
             $db = Database::getInstants();
             for ($i=1; $i <=2 ; $i++) { 
                 $product = new Product();
@@ -37,7 +41,8 @@
             echo "Da run innitData";
         }
 
-        public function insertTableTest(){
+        public function insertTableTest()
+        {
             $db = Database::getInstants();
             $product = new Product();
             $product->setId(2);
@@ -48,7 +53,8 @@
             $db->insertTable($product);
         }
 
-        public function updateTableTest(){
+        public function updateTableTest()
+        {
             $db = Database::getInstants();
             $product = new Product();
             $product->setId(2);
@@ -59,7 +65,8 @@
             $db->updateTable($product);
         }
 
-        public function deleteTableTest(){
+        public function deleteTableTest()
+        {
             $db = Database::getInstants();
             $product = new Product();
             $product->setId(2);
@@ -70,17 +77,20 @@
             $db->deleteTable($product);
         }
 
-        public function truncateTableTest(){
+        public function truncateTableTest()
+        {
             $db = Database::getInstants();
             $db->truncateTable(PRODUCT);
         }
 
-        public function selectTableTest(){
+        public function selectTableTest()
+        {
             $db = Database::getInstants();
            return $db->selectTable(PRODUCT);
         }
 
-        public function updateByIdTableTest(){
+        public function updateByIdTableTest()
+        {
             $db = Database::getInstants();
             $product = new Product();
             $product->setId(2);
@@ -91,7 +101,8 @@
             $db->updateTable($product);
         }
         
-        public function printTableTest($obj){
+        public function printTableTest($obj)
+        {
             echo "<br>";
             echo "<pre>";
             echo $obj->getId()."<br>";
@@ -100,7 +111,6 @@
         }
     }
 
-    // Test case
     $dataDemo = new DatabaseDemo();
     $dataDemo->initDatabase();
     echo "---<br>";
@@ -125,4 +135,3 @@
      foreach ($dataDemo->selectTableTest() as $key => $value) {
          $dataDemo->printTableTest($value);
      }
-?>

@@ -1,21 +1,26 @@
 <?php 
+
     include_once "BaseDAO.php";
     include_once "../IDAO/IProductDAO.php";
-    class ProductDAO extends BaseDAO implements IProductDAO{
+
+    class ProductDAO extends BaseDAO implements IProductDAO
+    {
         private static $instants;
         private function __construct()
         {
             
         }
 
-        public static function getInstants(){
+        public static function getInstants()
+        {
             if(empty(self::$instants)){
                 self::$instants = new ProductDAO();
             }
             return self::$instants;
         }
 
-        public function findAll(){
+        public function findAll()
+        {
             $db = Database::getInstants();
             return $db->selectTable(PRODUCT);
         }
@@ -26,4 +31,3 @@
             return $db->selectByIdTable(PRODUCT,$id);
         }
     }
-?>

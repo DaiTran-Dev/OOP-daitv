@@ -1,5 +1,7 @@
 <?php 
-    interface IDatabase{
+
+    interface IDatabase
+    {
         public static function getInstants();
         public function insertTable($row);
         public function updateTable($row);
@@ -8,4 +10,3 @@
         public function selectByIdTable($name,$id);
         public function truncateTable($name);
     }
-?>
